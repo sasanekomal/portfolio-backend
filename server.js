@@ -3,22 +3,32 @@ import cors from "cors";
 import dotenv from "dotenv";
 import contactRoutes from "./routes/contactRoutes.js";
 
-
-
-dotenv.config(); // ✅ Load environment variables
+dotenv.config(); // Load environment variables
 
 const app = express();
 
-app.use(cors({
-  origin: ["http://localhost:5173", "https://komalsasane-portfolio.netlify.app/"], // ✅ replace with your Netlify URL later
-  methods: ["GET", "POST"],
-}));
+// ✅ CORS configuration
+const corsOptions = {
+  origin: [
+    "http://localhost:5173", // local dev
+    "https://komalsasane-portfolio.netlify.app", // Netlify
+    "https://www.komalsasane-portfolio.netlify.app" 
+  ],
+  methods: ["GET", "POST", "OPTIONS"], 
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests for all routes
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
-// ✅ Use routes
+// Use routes
 app.use("/api/contacts", contactRoutes);
 
+// Test route
 app.get("/", (req, res) => {
   res.send("✅ Portfolio backend is running!");
 });
