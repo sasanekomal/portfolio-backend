@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import contactRoutes from "./routes/contactRoutes.js";
 
+
+
 dotenv.config(); // ✅ Load environment variables
 
 const app = express();
@@ -15,7 +17,7 @@ app.use(cors({
 app.use(express.json());
 
 // ✅ Use routes
-app.use("/api/contact", contactRoutes);
+app.use("portfolio-backend-production-c4a0.up.railway.app", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("✅ Portfolio backend is running!");
