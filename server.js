@@ -10,7 +10,7 @@ dotenv.config(); // ✅ Load environment variables
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-frontend-name.netlify.app"], // ✅ replace with your Netlify URL later
+  origin: ["http://localhost:5173", "https://komalsasane-portfolio.netlify.app/"], // ✅ replace with your Netlify URL later
   methods: ["GET", "POST"],
 }));
 
