@@ -17,7 +17,7 @@ app.use(cors({
 app.use(express.json());
 
 // ✅ Use routes
-app.use("https://portfolio-backend-production-c4a0.up.railway.app", contactRoutes);
+app.use("/api/contacts", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("✅ Portfolio backend is running!");
